@@ -38,7 +38,9 @@ class Vessel
             if node.elem?
                case node.name.downcase
                when 'br', 'span'
-                  node.attributes.delete_if { |k,v| k.downcase != 'style' }
+               	if node.attributes.respond_to? :delete_if
+                     node.attributes.delete_if { |k,v| k.downcase != 'style' }
+                  end
                else
                   node.parent.children.delete(node)
                end
