@@ -30,7 +30,7 @@ class Vessel
    
    class <<self
       def parse(data)
-         matched = (data =~ /<tt style=\"background-color: rgb\(0,0,0\)\">(.+)<\/tt><br\/><a href=\"http:\/\/www\.captainforever\.com\/captainforever\.php\?cfe=([a-z0-9]+)\">Pilot this vessel<\/a>/m)
+         matched = (data =~ /<tt style=\"background-color: rgb\(0,0,0\)\">(.+)<\/tt><br\/><a href=\"http:\/\/www\.captainforever\.com\/captainsuccessor\.php\?cfe=([a-z0-9]+)\">Pilot this vessel<\/a>/m)
          return nil if matched == nil
          cfe = $2
          data = Hpricot($1.gsub(/&lt([^;])/, '&lt;\1'))
@@ -68,7 +68,7 @@ class Vessel
 
    def pilot_href(track=false)
       return "/vessels/#{id}/pilot" if track
-      "http://www.captainforever.com/captainforever.php?cfe=#{cfe}"
+      "http://www.captainforever.com/captainsuccessor.php?cfe=#{cfe}"
    end
 end
 
